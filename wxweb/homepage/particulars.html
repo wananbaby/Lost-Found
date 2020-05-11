@@ -9,53 +9,59 @@
 <body>
     <a href="homepage.html" class="weui-btn weui-btn_primary" style="background-color: #0bb20c;margin-left: 10px;float: left">返回</a>
     <br>
-    <h1 id="h1ID"></h1>
-    <img id="imgID" src="">
+    <br>
+        <h1 id="miaoshu" ></h1>
+        <img src="" width="80%" id="imgid" class="img_bu">
+        <h2 id="beizhu" style="display:inline-block">55</h2>
     <h1>
         是我的请点击👉
         <a href="submit()" class="weui-btn weui-btn_primary" style="background-color: #0bb20c;width: max-content;display: inline">确定</a>
     </h1>
 
     <script type="text/javascript">
-        var miaoshuID = sessionStorage.getItem("miaoshuID");
-        var srcID = sessionStorage.getItem("srcID");
+        window.onload = function () {
+            var miaoshuID = sessionStorage.getItem("xq_miaoshu");
+            var srcID = sessionStorage.getItem("xq_src");
+            var beizhu = sessionStorage.getItem("xq_beizhu")
+            var UserName = sessionStorage.getItem("UserName");
+            document.getElementById("miaoshu").innerText = miaoshuID
+            document.getElementById("imgid").src= srcID
+            document.getElementById("beizhu").innerText = beizhu
+            // $("#miaoshu").html(miaoshuID+"")
+            // $("#imgid").src = srcID
+            // $("#beizhu").text(beizhu)
 
-        var userName = sessionStorage.getItem("username");
 
+            function submit() {
+                $.ajax({
+                    type:"post",
+                    url:"http://localhost/isme",
+                    data:{
+                        username:userName,
+                        miaoshu:miaoshuID,
+                        src:srcID,
+                        f:"json"
+                    },
+                    dataType:"string",
+                    async:false,
+                    success:function (data) {
+                        if (data == "成功"){
+                            alert("认领成功，物品以锁定，请尽快来取！");
+                        }
+                        else {
+                            alert(data);
+                        }
 
-        $("#h1ID").val(miaoshuID);
-        $("#imgID").src = srcID;
+                    },
+                    error:function (e) {
+                        alert("提交失败，请重试!");
+                        console.log(e);
+                        alert(e);
 
-        function submit() {
-            $.ajax({
-                type:"post",
-                url:"http://localhost/isme",
-                data:{
-                    username:userName,
-                    miaoshu:miaoshuID,
-                    src:srcID,
-                    f:"json"
-                },
-                dataType:"string",
-                async:false,
-                success:function (data) {
-                    if (data == "成功"){
-                        alert("认领成功，物品以锁定，请尽快来取！");
                     }
-                    else {
-                        alert(data);
-                    }
-
-                },
-                error:function (e) {
-                    alert("提交失败，请重试!");
-                    console.log(e);
-                    alert(e);
-
-                }
-            });
+                });
+            }
         }
-
     </script>
 </body>
 </html>

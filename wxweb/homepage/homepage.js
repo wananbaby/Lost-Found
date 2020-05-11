@@ -12,9 +12,6 @@ window.onload =function () {
         return _objToStrMap(JSON.parse(jsonStr));
     }
 
-    function img_read() {
-        var miaoshu = null;
-    }
     function demo() {
         $.ajax({
             type:"post",
@@ -82,18 +79,19 @@ window.onload =function () {
         })
     }
 
+
+    var map = new HashMap();
+
     function imgRead() {
+        // let imgReadDTO = {
+        //     miaoshu: null,
+        //     src: null,
+        //     remark: null,
+        //     UserId:null
+        //     // id:null
+        // };
 
-
-        var imgReadDTO = {
-            miaoshu: null,
-            src: null,
-            remark: null,
-            UserId:null
-            // id:null
-        };
-
-        var map = new HashMap();
+        // var map = new HashMap();
 
 
         sessionStorage.setItem("UserName","baby");
@@ -141,6 +139,13 @@ window.onload =function () {
                 let HeightID = "80";
                 let srcID = "../img/no.jpg";
                 for (let i = 0;i<size;i++){
+                    let imgReadDTO = {
+                        miaoshu: null,
+                        src: null,
+                        remark: null,
+                        UserId:null
+                        // id:null
+                    };
                     let k = (i).toString()
                     let j = map1.get(k);
                     if(j){
@@ -153,19 +158,21 @@ window.onload =function () {
                             map.put(i,imgReadDTO)
                         }
                     }
-                        console.log(i)
+                        // console.log(i)
                         let h1ID = "miaoshu_" + i.toString();
                         let imgID = "img_" + i.toString();
+                        let h2ID = "beizhu_" + i.toString();
 
                         let imginformation = map.get(i);
                         let h1TEXT = imginformation.miaoshu;
                         let srcID = imginformation.src;
                         let remarkID = imginformation.remark;
                         let userID = imginformation.UserId;
-                        let lihiimg = "<li><h1 id="+h1ID+">"+h1TEXT+"</h1>"+"<img src="+srcID+" width="+widthID+" id="+imgID+" class="+classID+">"+remarkID+"</img>" + "</li>";
+                        let lihiimg = "<li class='licl'><h1 id="+h1ID+">"+h1TEXT+"</h1>"
+                            +"<img src="+srcID+" width="+widthID+" id="+imgID+" class="+
+                            classID+"><h3 style=\"display:inline-block\" id="+h2ID+">"+remarkID+"</h3>"+"</li>";
                         $("#ulid").append(lihiimg);
                 }
-
 
 
 
@@ -191,9 +198,49 @@ window.onload =function () {
                 alert(that)
             }
     })
-
     }
-
     imgRead();
 
+
+    alert("加载完成");
+    $(document).ready(function () {
+        // $(".img_bu").bind("click",function () {
+        //     var id = $(this).attr('id')
+        //     alert(id)
+        // });
+        $(".licl").bind("click",function () {
+            // let imgRead = {
+            //     miaoshu: null,
+            //     src: null,
+            //     remark: null,
+            //     UserId:null
+            //     // id:null
+            // };
+            console.log('进入');
+            // var id = $(this).attr('id')
+            // alert(id)
+            var i =$(this).index();
+            // alert(i)
+
+            var miaoshu = map.get(i).miaoshu
+            var src = map.get(i).src
+            var beizhu = map.get(i).remark
+
+            sessionStorage.setItem("xq_miaoshu",miaoshu)
+            sessionStorage.setItem("xq_src",src)
+            sessionStorage.setItem("xq_beizhu",beizhu)
+            // alert(miaoshu)
+            // alert(src)
+            // alert(beizhu)
+
+
+            // let ppid = "p"+i.toString();
+            // alert(i)
+            // sessionStorage.setItem("a",imgRead);
+            window.location = 'particulars.html';
+        });
+    });
+
+
 };
+

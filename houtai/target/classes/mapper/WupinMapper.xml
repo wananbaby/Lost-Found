@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.houtai.mapper.WupinMapper">
+
+
+    <!--查询单个-->
+    <select id="queryById" resultType="com.example.houtai.domain.Wupin">
+        select
+          id, name, type, zhonglei, openId, photoLink, valid, remark, createUser, createTime, modifyUser, modifyTime
+        from stu.wupin
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultType="com.example.houtai.domain.Wupin">
+        select
+          id, name, type, zhonglei, openId, photoLink, valid, remark, createUser, createTime, modifyUser, modifyTime
+        from stu.wupin
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultType="com.example.houtai.domain.Wupin">
+        select
+          id, name, type, zhonglei, openId, photoLink, valid, remark, createUser, createTime, modifyUser, modifyTime
+        from stu.wupin
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="zhonglei != null and zhonglei != ''">
+                and zhonglei = #{zhonglei}
+            </if>
+            <if test="openid != null and openid != ''">
+                and openId = #{openid}
+            </if>
+            <if test="photolink != null and photolink != ''">
+                and photoLink = #{photolink}
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="createuser != null">
+                and createUser = #{createuser}
+            </if>
+            <if test="createtime != null">
+                and createTime = #{createtime}
+            </if>
+            <if test="modifyuser != null">
+                and modifyUser = #{modifyuser}
+            </if>
+            <if test="modifytime != null">
+                and modifyTime = #{modifytime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into stu.wupin(name, type, zhonglei, openId, photoLink, valid, remark, createUser, createTime, modifyUser, modifyTime)
+        values (#{name}, #{type}, #{zhonglei}, #{openid}, #{photolink}, #{valid}, #{remark}, #{createuser}, #{createtime}, #{modifyuser}, #{modifytime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update stu.wupin
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="zhonglei != null and zhonglei != ''">
+                zhonglei = #{zhonglei},
+            </if>
+            <if test="openid != null and openid != ''">
+                openId = #{openid},
+            </if>
+            <if test="photolink != null and photolink != ''">
+                photoLink = #{photolink},
+            </if>
+            <if test="valid != null">
+                valid = #{valid},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="createuser != null">
+                createUser = #{createuser},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime},
+            </if>
+            <if test="modifyuser != null">
+                modifyUser = #{modifyuser},
+            </if>
+            <if test="modifytime != null">
+                modifyTime = #{modifytime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from stu.wupin where id = #{id}
+    </delete>
+
+</mapper>
