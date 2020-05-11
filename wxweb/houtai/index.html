@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<main>
+  <form class="form" style="display: block" id="one">
+    <div class="form__cover"></div>
+    <div class="form__loader">
+      <div class="spinner active">
+        <svg class="spinner__circular" viewBox="25 25 50 50">
+          <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="form__content">
+      <h1>登录</h1>
+      <div class="styled-input">
+        <input type="text" class="styled-input__input" name="nickname" id="text1">
+        <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Username</span> </div>
+        <div class="styled-input__circle"></div>
+      </div>
+      <div class="styled-input">
+        <input type="text" class="styled-input__input" id="text2">
+        <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Password</span> </div>
+        <div class="styled-input__circle"></div>
+      </div>
+      <button type="button" class="styled-button" onclick="f()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">Submit</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">Submit</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">Submit</span> </span> </span> </span> </button>
+    </div>
+  </form>
+  <form class="form" style="display: none" id="two">
+    <div class="form__cover"></div>
+    <div class="form__loader">
+      <div class="spinner active">
+        <svg class="spinner__circular" viewBox="25 25 50 50">
+          <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="form__content">
+      <h1>注册</h1>
+      <div class="styled-input">
+        <input type="text" class="styled-input__input" name="nickname" id="text3">
+        <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Username</span> </div>
+        <div class="styled-input__circle"></div>
+      </div>
+      <div class="styled-input">
+        <input type="text" class="styled-input__input" id="text4">
+        <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Password</span> </div>
+        <div class="styled-input__circle"></div>
+      </div>
+      <button type="button" class="styled-button" onclick="p()"><span class="styled-button__real-text-holder"><span class="styled-button__real-text">Submit</span><span class="styled-button__moving-block face"><span class="styled-button__text-holder"><span class="styled-button__text">Submit</span></span></span><span class="styled-button__moving-block back"><span class="styled-button__text-holder"><span class="styled-button__text">Submit</span></span></span></span></button>
+    </div>
+  </form>
+  <div style="position: absolute;bottom:0;width: 50%">
+    <button type="button" class="styled-button" id="one_one" style="display: none" onclick="btnCut1()">
+      <span class="styled-button__real-text-holder">
+        <span class="styled-button__real-text">登录</span>
+        <span class="styled-button__moving-block face">
+          <span class="styled-button__text-holder">
+            <span class="styled-button__text">登录</span>
+          </span>
+        </span>
+        <span class="styled-button__moving-block back">
+          <span class="styled-button__text-holder">
+            <span class="styled-button__text">登录</span>
+          </span>
+        </span>
+      </span>
+    </button>
+    <button type="button" class="styled-button" id="two_two" style="display: block" onclick="btnCut2()">
+      <span class="styled-button__real-text-holder">
+        <span class="styled-button__real-text">注册</span>
+        <span class="styled-button__moving-block face">
+          <span class="styled-button__text-holder">
+            <span class="styled-button__text">注册</span>
+          </span>
+        </span>
+        <span class="styled-button__moving-block back">
+          <span class="styled-button__text-holder">
+            <span class="styled-button__text">注册</span>
+          </span>
+        </span>
+      </span>
+    </button>
+  </div>
+</main>
+<script  src="js/index.js"></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+  function btnCut1() {
+    $("#two_two").css('display','block')
+    $("#one_one").css('display','none')
+
+    $("#one").css('display','block')
+    $("#two").css('display','none')
+  }
+
+  function btnCut2() {
+    $("#two_two").css('display','none')
+    $("#one_one").css('display','block')
+
+    $("#one").css('display','none')
+    $("#two").css('display','block')
+
+  }
+  function f() {
+    let loginDTO = {
+      UserName: $("#text1").val(),
+      UserPassword: $("#text2").val()
+    };
+    let loginRequest = {
+      loginDTO: loginDTO
+    };
+
+    $.ajax({
+      url:"http://101.132.133.237:9096/wexin/UserLogin",
+      data: JSON.stringify(loginRequest),
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      success: function (data) {
+
+        var Status = data.loginStatus;
+        var Type = data.type;
+        var UserName = data.userName;
+        if (Status == "error"){
+          alert("账号密码错误")
+        }
+        if (Status == "success"){
+          alert("登录成功")
+          sessionStorage.setItem("UserName",UserName);
+          sessionStorage.setItem("UserType",Type);
+        }
+      },
+      error:function (e) {
+        var that = JSON.stringify(e);
+        alert("失败");
+        alert(that);
+        console.log(that);
+      }
+    })
+  }
+  function p() {
+	  
+	  let userDTO = {
+		  UserName: $("#text3").val(),
+		  UserPassword: $("#text4").val(),
+          type: 1
+	  };
+	  let registerRequest = {
+		  UserDTO: userDTO
+	  };
+	  
+	  $.ajax({
+      url: "http://101.132.133.237:9096/wexin/UserRegister",
+      data: JSON.stringify(registerRequest),
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      success: function(d){
+        //{"registerStatus":"success","userName":"zhang"}
+        var Status = d.registerStatus;
+        var name = d.userName;
+        alert(Status)
+        alert(name)
+        if(Status == "error"){
+          alert("注册失败，已存在！")
+        }
+        if(status == "success"){
+          alert("注册成功");
+          sessionStorage.setItem("UserName",name);
+        }
+        else {
+          alert(d)
+        }
+      },
+      error:function(e){
+        const that = JSON.stringify(e);
+        alert(that);
+        console.log(that);
+      }
+    })
+  }
+</script>
+</body>
+</html>

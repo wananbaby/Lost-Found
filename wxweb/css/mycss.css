@@ -1,0 +1,128 @@
+label{
+	color: #0000FF;
+	
+	/*color: mediumspringgreen;
+	*/
+}
+
+
+.text-gray,
+.line-gray,
+.lines-gray {
+	color: var(--gray);
+}
+
+.bg-white {
+	background-color: var(--white);
+	color: var(--darkGray);
+}
+
+/* ==================
+          操作条
+ ==================== */
+
+ .cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+
+.cu-bar .action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+
+.cu-bar .action.border-title {
+	position: relative;
+	top: -10rpx;
+}
+
+.cu-bar .action.border-title text[class*="bg-"]:last-child {
+	position: absolute;
+	bottom: -0.5rem;
+	min-width: 2rem;
+	height: 6rpx;
+	left: 0;
+}
+
+.cu-bar .action.sub-title {
+	position: relative;
+	top: -0.2rem;
+}
+
+.cu-bar .action.sub-title text {
+	position: relative;
+	z-index: 1;
+}
+
+.cu-bar .action.sub-title text[class*="bg-"]:last-child {
+	position: absolute;
+	display: inline-block;
+	bottom: -0.2rem;
+	border-radius: 6rpx;
+	width: 100%;
+	height: 0.6rem;
+	left: 0.6rem;
+	opacity: 0.3;
+	z-index: 0;
+}
+
+.cu-bar .action.sub-title text[class*="text-"]:last-child {
+	position: absolute;
+	display: inline-block;
+	bottom: -0.7rem;
+	left: 0.5rem;
+	opacity: 0.2;
+	z-index: 0;
+	text-align: right;
+	font-weight: 900;
+	font-size: 36rpx;
+}
+
+.cu-bar.justify-center .action.border-title text:last-child,
+.cu-bar.justify-center .action.sub-title text:last-child {
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+
+.cu-bar .action:first-child {
+	margin-left: 30rpx;
+	font-size: 30rpx;
+}
+
+.cu-bar .action text.text-cut {
+	text-align: left;
+	width: 100%;
+}
+
+.cu-bar .cu-avatar:first-child {
+	margin-left: 20rpx;
+}
+
+.cu-bar .action:first-child>text[class*="cuIcon-"] {
+	margin-left: -0.3em;
+	margin-right: 0.3em;
+}
+
+.cu-bar .action:last-child {
+	margin-right: 30rpx;
+}
+
+.cu-bar .action>text[class*="cuIcon-"],
+.cu-bar .action>view[class*="cuIcon-"] {
+	font-size: 36rpx;
+}
+
+.cu-bar .action>text[class*="cuIcon-"]+text[class*="cuIcon-"] {
+	margin-left: 0.5em;
+}
+
+
+

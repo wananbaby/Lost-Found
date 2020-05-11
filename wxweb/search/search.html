@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询界面</title>
+</head>
+<body>
+    <h1 id="h1id"></h1>
+    <img id="imgid" src="/img/640.jpg">
+<script type="text/javascript">
+    var h1 = sessionStorage.getItem("it_information");
+    var img1 = sessionStorage.getItem("it_url");
+
+    document.getElementById("h1id").innerText = h1;
+    document.getElementById("imgid").src = img1;
+
+</script>
+
+</body>
+</html>

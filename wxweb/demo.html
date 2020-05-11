@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+name:<input type="text" id="name">
+password:<input type="text" id="password">
+<input type="submit" onclick="login()">
+<!--<form method="post" action="http://localhost:9096/wexin/testzys">-->
+<!--    <input type="text" name="name" id="name">-->
+<!--    <input type="text" name="password" id="password">-->
+<!--    <input type="submit">-->
+</form>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+    function login(){
+        let loginDTO = {
+            UserName: $("#name").val(),
+            UserPassword: $("#password").val()
+        }
+        let abcd = {
+            loginDTO: loginDTO
+        };
+        // alert(JSON.stringify(abcd))
+        // data:{"loginStatus":"success","type":1,"userName":"wang"}
+        $.ajax({
+            url: "http://localhost:9096/wexin/UserLogin",
+            data: JSON.stringify(abcd),
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            success: function (data) {
+                var LoginStatus = data.loginStatus;
+                var Type = data.type;
+                var UserName = data.userName;
+                if (LoginStatus == "success"){
+                    alert("登录成功")
+
+                }
+            },
+            error:function (e) {
+                alert("失败")
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
