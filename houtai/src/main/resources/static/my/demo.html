@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="file" id="file"/>
+		<button onclick="tj()">提交</button>
+		
+		
+		
+		
+		<script>
+			function tj(){
+				var f = document.getElementById("file").File;
+				xmlhttp.open("post","http://127.0.0.1/upload",false);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xmlhttp.send(f);
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
