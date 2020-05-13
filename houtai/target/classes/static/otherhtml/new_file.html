@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/2020.css" />
+	</head>
+	<body>
+		
+		<div class= "wrapper" id="one">
+		  <div class= "text" data-text= "2020">2020</div>
+		<div>
+		
+		<script>
+			if (window.innerWidth)
+			winWidth = window.innerWidth;
+			else if ((document.body) && (document.body.clientWidth))
+			winWidth = document.body.clientWidth;
+			// 获取窗口高度
+			if (window.innerHeight)
+			winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+			winHeight = document.body.clientHeight;
+			var str = document.getElementById("one").style.height
+			document.write(winHeight)
+		</script>
+	</body>
+</html>

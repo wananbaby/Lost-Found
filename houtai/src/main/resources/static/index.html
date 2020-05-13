@@ -68,26 +68,55 @@
 
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
+
     window.onload = function () {
+    //
+    //         // document.getElementById("xiaoxi_1").style.display = "none"
+    //         // document.getElementById("xiaoxi_2").style.display = "none"
+    //
+    //         // $.ajax({
+    //         //     type:"post",
+    //         //     url:"http://localhost/weidu",
+    //         //     data:{
+    //         //         homepage:$("#xiaoxi_1").val(),
+    //         //         f:"json"
+    //         //     }
+    //         // });
+    //         var htmlw = document.documentElement.clientWidth;
+    //         var htmlh = document.documentElement.clientHeight;
+    //         // alert(htmlh);
+    //         document.getElementById("htmlid").style.width = htmlw + 'px';
+    //         document.getElementById("htmlid").style.height = htmlh + 'px';
+    //         // alert(document.getElementById("htmlid").style.height)
+    //     }
+    // var ua = window.navigator.userAgent.toLowerCase();
+    // if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+    //     //在微信中打开需要的操作
+    //     window.onload = function () {
+    //
+    //         // document.getElementById("xiaoxi_1").style.display = "none"
+    //         // document.getElementById("xiaoxi_2").style.display = "none"
+    //
+    //         // $.ajax({
+    //         //     type:"post",
+    //         //     url:"http://localhost/weidu",
+    //         //     data:{
+    //         //         homepage:$("#xiaoxi_1").val(),
+    //         //         f:"json"
+    //         //     }
+    //         // });
+    //         var htmlw = document.documentElement.clientWidth;
+    //         var htmlh = document.documentElement.clientHeight;
+    //         // alert(htmlh);
+    //         document.getElementById("htmlid").style.width = htmlw + 'px';
+    //         document.getElementById("htmlid").style.height = htmlh + 'px';
+    //         // alert(document.getElementById("htmlid").style.height)
+    //     }
+    // } else {
+    //     //不在微信中打开
+    //     var opened = window.open('about:block','_self');
+    // }
 
-        // document.getElementById("xiaoxi_1").style.display = "none"
-        // document.getElementById("xiaoxi_2").style.display = "none"
-
-        // $.ajax({
-        //     type:"post",
-        //     url:"http://localhost/weidu",
-        //     data:{
-        //         homepage:$("#xiaoxi_1").val(),
-        //         f:"json"
-        //     }
-        // });
-        var htmlw = document.documentElement.clientWidth;
-        var htmlh = document.documentElement.clientHeight;
-        // alert(htmlh);
-        document.getElementById("htmlid").style.width = htmlw + 'px';
-        document.getElementById("htmlid").style.height = htmlh + 'px';
-        // alert(document.getElementById("htmlid").style.height)
-    }
 </script>
 <!-- 搜索事件 -->
 <script type="text/javascript">
@@ -95,13 +124,14 @@
     $('#search_input').bind('keyup', function(event) {
         if (event.keyCode == "13") {
             //回车执行查询
+            var d = {
+                text : "女枪"
+            }
+        }
             $.ajax({
                type:"post",
-               url:"/search",
-               data:{
-                   text:$("#searchInput").val(),
-                   f: "json"
-               },
+               url:"/wexin/soso",
+               data:JSON.stringify(d),
                 dataType:"json",
                 async:false,
                 success:function (d) {

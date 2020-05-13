@@ -10,8 +10,8 @@
         <module name="houtai" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="houtai" target="1.8" />
+    <bytecodeTargetLevel target="8">
+      <module name="houtai" target="1.6" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

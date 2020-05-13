@@ -49,7 +49,7 @@ public class UpdateController {
     private ResponseDTO fileUpdate(@RequestBody FileUploadRequest request) throws IOException {
         MultipartFile file = request.getFile();
         if (file!=null){
-            String filePath = "E://img//";
+            String filePath = "C://img//";
             String filename = file.getOriginalFilename();
             String path = filePath+filename;
             File file1 = new File(path);

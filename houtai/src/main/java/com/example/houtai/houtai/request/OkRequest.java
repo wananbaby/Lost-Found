@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class OkRequest {
+public class OkRequest{
 
     @JsonProperty("id")
     private String name;

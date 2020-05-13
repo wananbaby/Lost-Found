@@ -15,7 +15,7 @@
         <h2 id="beizhu" style="display:inline-block">55</h2>
     <h1>
         是我的请点击👉
-        <a href="submit()" class="weui-btn weui-btn_primary" style="background-color: #0bb20c;width: max-content;display: inline">确定</a>
+        <button onclick="submit()" class="weui-btn weui-btn_primary" style="background-color: #0bb20c;width: max-content;display: inline">确定</button>
     </h1>
 
     <script type="text/javascript">
@@ -31,19 +31,19 @@
             // $("#imgid").src = srcID
             // $("#beizhu").text(beizhu)
 
-
             function submit() {
+
+                var d = {
+                    id : "1",
+                    userId : "1"
+                }
                 $.ajax({
                     type:"post",
-                    url:"http://localhost/isme",
-                    data:{
-                        username:userName,
-                        miaoshu:miaoshuID,
-                        src:srcID,
-                        f:"json"
-                    },
-                    dataType:"string",
+                    url:"/ok/okRenling",
+                    data:JSON.stringify(d),
+                    dataType:"json",
                     async:false,
+                    contentType: "application/json; charset=UTF-8",
                     success:res => {
                         if (res.hasError){
                            alert("提交失败")
