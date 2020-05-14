@@ -14,8 +14,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Renling implements Serializable {
-    private static final long serialVersionUID = 514685233767609406L;
-    
     private Integer id;
     
     private Integer wupinid;

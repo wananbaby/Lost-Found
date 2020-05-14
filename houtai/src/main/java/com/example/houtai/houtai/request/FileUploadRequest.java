@@ -3,6 +3,7 @@ package com.example.houtai.houtai.request;
 
 import com.example.houtai.boot.RequestDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,8 +15,6 @@ import javax.validation.constraints.NotNull;
 public class FileUploadRequest {
 
 
-    @JsonProperty("file")
-    private MultipartFile file;
     @JsonProperty("name")
     private String name;
     @JsonProperty("h2id")

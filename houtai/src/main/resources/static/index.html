@@ -69,7 +69,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
-    window.onload = function () {
+    // window.onload = function () {
     //
     //         // document.getElementById("xiaoxi_1").style.display = "none"
     //         // document.getElementById("xiaoxi_2").style.display = "none"
@@ -121,11 +121,12 @@
 <!-- 搜索事件 -->
 <script type="text/javascript">
     //回车事件绑定
+    window.onload = function () {
     $('#search_input').bind('keyup', function(event) {
         if (event.keyCode == "13") {
             //回车执行查询
             var d = {
-                text : "女枪"
+                text : $('#searchInput').val()
             }
         }
             $.ajax({
@@ -150,7 +151,7 @@
                 }
             });
         }
-    });
+    )}
 </script>
 
 

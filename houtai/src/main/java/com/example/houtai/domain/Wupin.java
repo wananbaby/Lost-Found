@@ -14,7 +14,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Wupin implements Serializable {
-    private static final long serialVersionUID = -47130106621049901L;
     
     private Integer id;
     

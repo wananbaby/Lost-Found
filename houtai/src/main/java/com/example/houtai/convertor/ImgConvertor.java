@@ -10,7 +10,12 @@ public class ImgConvertor {
         ImgReadDTO imgReadDTO = new ImgReadDTO();
 
         imgReadDTO.setMiaoshu(img.getMiaoshu());
-        imgReadDTO.setSrc(img.getSrc());
+        String s = img.getSrc().substring(0,1);
+        if (s.equals("h")){
+            imgReadDTO.setSrc(img.getSrc());
+        }else {
+            imgReadDTO.setSrc("http://sczlzys.cn:"+img.getSrc());
+        }
         imgReadDTO.setRemark(img.getRemark());
         imgReadDTO.setUserId(img.getUserid().intValue());
 

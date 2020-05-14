@@ -14,13 +14,11 @@
 		<div>
 			<img id="preview" >
 		</div>
-		<form action="/Update/fileUpdate" id="form" method="post" enctype="multipart/form-data" onsubmit="return check()">
 			<input type="file" id="file" name="file" accept="image/*"/>
 			<h2 style="display: inline">物品名称：</h2><input type="text" id="name" style="display: inline">&emsp;
 			<h2 style="display: inline">上传人：</h2><input type="text" id="h2id" style="display: inline">&emsp;
 			<h2 style="display: inline">备注：</h2><input type="text" id="beizhu" style="display: inline">&emsp;
-			<input type="submit"/>
-		</form>
+			<input type="submit" onclick="check()"/>
 		<div id="myDiv"></div>
 		
 		
@@ -59,7 +57,19 @@
                 // check if input contains a valid image file
                 if (!file || file.type.indexOf("image/") < 0) {
                     return false;
-                }
+                }else {
+
+
+
+
+
+
+
+
+
+					window.location='up_success.html';
+					return true;
+				}
                 window.location='up_success.html';
                 return true;
             }

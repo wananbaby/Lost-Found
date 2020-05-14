@@ -1,6 +1,5 @@
 package com.example.houtai.houtai.response;
 
-import com.example.houtai.boot.ResponseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Quanxian implements Serializable {
-    private static final long serialVersionUID = -86090089447111643L;
+
     
     private String username;
     

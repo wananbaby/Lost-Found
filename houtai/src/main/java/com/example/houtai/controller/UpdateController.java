@@ -1,15 +1,13 @@
 package com.example.houtai.controller;
 
 
-import com.example.houtai.boot.ResponseDTO;
+import com.example.houtai.houtai.response.ResponseDTO;
 import com.example.houtai.domain.Img;
 import com.example.houtai.domain.Wupin;
 import com.example.houtai.houtai.request.FileUploadRequest;
 import com.example.houtai.service.ImgService;
 import com.example.houtai.service.SampleService;
-import com.example.houtai.service.SmsService;
 import com.example.houtai.service.WupinService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,19 +42,19 @@ public class UpdateController {
 
 
     @ResponseBody
-    @RequestMapping(path = "/fileUpdate",method = RequestMethod.POST ,produces = "application/json;charset=UTF-8")
+    @RequestMapping(path = "/fileUpdate",method = RequestMethod.POST ,consumes = "application/form-data")
     @ApiOperation(value = "发布")
-    private ResponseDTO fileUpdate(@RequestBody FileUploadRequest request) throws IOException {
-        MultipartFile file = request.getFile();
-        if (file!=null){
+    private ResponseDTO fileUpdate(MultipartFile file,FileUploadRequest request) throws IOException {
+        MultipartFile file2 = file;
+        if (file2!=null){
             String filePath = "C://img//";
-            String filename = file.getOriginalFilename();
+            String filename = file2.getOriginalFilename();
             String path = filePath+filename;
             File file1 = new File(path);
             if (!file1.getParentFile().exists()){
                 file1.getParentFile().mkdirs();
             }
-            file.transferTo(file1);
+            file2.transferTo(file1);
             String miaoshu = sampleService.BaiduImg(path);
             if (miaoshu == request.getName()){
             }

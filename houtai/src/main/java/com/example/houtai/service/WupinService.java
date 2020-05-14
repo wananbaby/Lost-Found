@@ -21,6 +21,14 @@ public interface WupinService {
     Wupin queryById(Integer id);
 
     /**
+     * 通过实体作为筛选条件查询
+     *
+     * @param wupin 实例对象
+     * @return 对象列表
+     */
+    List<Wupin> queryByAll(Wupin wupin);
+
+    /**
      * 查询多条数据
      *
      * @param offset 查询起始位置

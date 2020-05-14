@@ -16,12 +16,16 @@ public class ImgDTO implements Serializable {
     @JsonProperty("id")
     @ApiModelProperty(value = "id",dataType = "Long",example = "1")
     private Long id;
+    @ApiModelProperty(value = "描述",dataType = "String",example = "w")
     @JsonProperty("miaoshu")
     private String miaoshu;
+    @ApiModelProperty(value = "src",dataType = "String",example = "w")
     @JsonProperty("src")
     private String src;
+    @ApiModelProperty(value = "备注",dataType = "String",example = "w")
     @JsonProperty("remark")
     private String remark;
+    @ApiModelProperty(value = "用户id",dataType = "Integer",example = "1")
     @JsonProperty("UserId")
     private Integer UserId;
 }

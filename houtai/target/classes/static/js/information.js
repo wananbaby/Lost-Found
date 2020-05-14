@@ -1,1 +1,0 @@
-// document.getElementById("confirm").onclick = confirm();

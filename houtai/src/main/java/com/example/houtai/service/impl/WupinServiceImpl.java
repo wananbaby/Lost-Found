@@ -6,7 +6,6 @@ import com.example.houtai.service.WupinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,10 +18,10 @@ import java.util.List;
 public class WupinServiceImpl implements WupinService {
 
     @Autowired
-    private WupinMapper wupinDao;
+    private WupinMapper wupinMapper;
 
-    public WupinServiceImpl(WupinMapper wupinDao){
-        this.wupinDao = wupinDao;
+    public WupinServiceImpl(WupinMapper wupinMapper){
+        this.wupinMapper = wupinMapper;
     }
 
 
@@ -34,7 +33,12 @@ public class WupinServiceImpl implements WupinService {
      */
     @Override
     public Wupin queryById(Integer id) {
-        return this.wupinDao.queryById(id);
+        return this.wupinMapper.queryById(id);
+    }
+
+    @Override
+    public List<Wupin> queryByAll(Wupin wupin) {
+        return this.wupinMapper.queryAll(wupin);
     }
 
     /**
@@ -46,7 +50,7 @@ public class WupinServiceImpl implements WupinService {
      */
     @Override
     public List<Wupin> queryAllByLimit(int offset, int limit) {
-        return this.wupinDao.queryAllByLimit(offset, limit);
+        return this.wupinMapper.queryAllByLimit(offset, limit);
     }
 
     /**
@@ -57,7 +61,7 @@ public class WupinServiceImpl implements WupinService {
      */
     @Override
     public Wupin insert(Wupin wupin) {
-        this.wupinDao.insert(wupin);
+        this.wupinMapper.insert(wupin);
         return wupin;
     }
 
@@ -69,7 +73,7 @@ public class WupinServiceImpl implements WupinService {
      */
     @Override
     public Wupin update(Wupin wupin) {
-        this.wupinDao.update(wupin);
+        this.wupinMapper.update(wupin);
         return this.queryById(wupin.getId());
     }
 
@@ -81,6 +85,6 @@ public class WupinServiceImpl implements WupinService {
      */
     @Override
     public boolean deleteById(Integer id) {
-        return this.wupinDao.deleteById(id) > 0;
+        return this.wupinMapper.deleteById(id) > 0;
     }
 }
