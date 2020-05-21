@@ -5,3 +5,6 @@ idea插件：https://plugins.jetbrains.com/plugin/10954-easy-code
 https://console.faceplusplus.com.cn/documents/40608240
 https://blog.csdn.net/gaofei880219/article/details/86552125
 https://api.abcyun.co/info/8
+黑苹果：https://blog.csdn.net/yue_2018/article/details/89056961
+https://blog.csdn.net/huangwei18351/article/details/85774388
+
