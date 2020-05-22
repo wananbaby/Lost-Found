@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trips.baseinfo.mapper.CityMapper">
+
+
+    <!--查询单个-->
+    <select id="queryById" parameterType="java.lang.Long" resultType="com.trips.baseinfo.domain.City">
+        select
+          id, fk_province, fk_timezone, name, pinyin, enname, remark, status, valid, fk_user_create, createtime, fk_user_modify, modifytime, code
+        from common_db.city
+        where  id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryCityList" parameterType="com.trips.baseinfo.mapper.City" resultType="com.trips.baseinfo.mapper.City">
+        select
+          id, fk_province, fk_timezone, name, pinyin, enname, remark, status, valid, fk_user_create, createtime, fk_user_modify, modifytime, code
+        from common_db.city
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="fkProvince != null">
+                and fk_province = #{fkProvince}
+            </if>
+            <if test="fkTimezone != null">
+                and fk_timezone = #{fkTimezone}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="pinyin != null and pinyin != ''">
+                and pinyin = #{pinyin}
+            </if>
+            <if test="enname != null and enname != ''">
+                and enname = #{enname}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="valid != null">
+                and valid = #{valid}
+            </if>
+            <if test="fkUserCreate != null">
+                and fk_user_create = #{fkUserCreate}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="fkUserModify != null">
+                and fk_user_modify = #{fkUserModify}
+            </if>
+            <if test="modifytime != null">
+                and modifytime = #{modifytime}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insertCity" keyProperty="id" useGeneratedKeys="true">
+        insert into common_db.city(fk_province, fk_timezone, name, pinyin, enname, remark, status, valid, fk_user_create, createtime, fk_user_modify, modifytime, code)
+        values (#{fkProvince}, #{fkTimezone}, #{name}, #{pinyin}, #{enname}, #{remark}, #{status}, #{valid}, #{fkUserCreate}, #{createtime}, #{fkUserModify}, #{modifytime}, #{code})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="updateCity" parameterType="com.trips.baseinfo.domain.City">
+        update common_db.city
+        <set>
+            <if test="fkProvince != null">
+                fk_province = #{fkProvince},
+            </if>
+            <if test="fkTimezone != null">
+                fk_timezone = #{fkTimezone},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="pinyin != null and pinyin != ''">
+                pinyin = #{pinyin},
+            </if>
+            <if test="enname != null and enname != ''">
+                enname = #{enname},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="valid != null">
+                valid = #{valid},
+            </if>
+            <if test="fkUserCreate != null">
+                fk_user_create = #{fkUserCreate},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="fkUserModify != null">
+                fk_user_modify = #{fkUserModify},
+            </if>
+            <if test="modifytime != null">
+                modifytime = #{modifytime},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <update id="invalidCity">
+        update common_db.city  set valid =#{valid, jdbcType=INTEGER} where id = #{id}
+    </update>
+
+</mapper>
